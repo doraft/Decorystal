@@ -25,6 +25,7 @@ final class DecorystalEntity extends Entity
     private static string $removeMessage;
     private static Color $color;
     private static float $plusCount;
+    private float $coolTime = 0;
 
     public function __construct(Location $location, ?CompoundTag $nbt = null)
     {
@@ -40,12 +41,21 @@ final class DecorystalEntity extends Entity
         return EntityIds::ENDER_CRYSTAL;
     }
 
+    public function attack(EntityDamageEvent $source): void
+    {
+        if(!$source instanceof EntityDamageByEntityEvent) return;
+        $damager = $source->getDamager();
+        if(!$damager instanceof Player) return;
+        if($this->server->isOp($damager->getName()) && $damager->isSneaking()) {
+            $this->close();
+            $damager->sendMessage(self::$removeMessage);
+        }
+    }
+
     protected function getInitialSizeInfo(): EntitySizeInfo
     {
         return new EntitySizeInfo(0.98, 0.98);
     }
-
-    private float $coolTime = 0;
 
     protected function entityBaseTick(int $tickDiff = 1): bool
     {
@@ -61,16 +71,5 @@ final class DecorystalEntity extends Entity
             $this->coolTime = $now + 0.5;
         }
         return parent::entityBaseTick($tickDiff);
-    }
-
-    public function attack(EntityDamageEvent $source): void
-    {
-        if(!$source instanceof EntityDamageByEntityEvent) return;
-        $damager = $source->getDamager();
-        if(!$damager instanceof Player) return;
-        if($this->server->isOp($damager->getName()) && $damager->isSneaking()) {
-            $this->close();
-            $damager->sendMessage(self::$removeMessage);
-        }
     }
 }
