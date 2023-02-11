@@ -1,0 +1,6 @@
+name: Decorystal
+main: DOHWI\Decorystal\Decorystal
+src-namespace-prefix: DOHWI\Decorystal
+api: 4.0.0
+version: 1.0.0
+author: dohwi

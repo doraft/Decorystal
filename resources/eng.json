@@ -1,0 +1,16 @@
+{
+  "MESSAGE_PREFIX": "§l§b[DECORYSTAL]§r§f ",
+  "COOL_TIME": 0.5,
+  "DUST_COUNT": 18,
+  "DUST_COLOR": [255, 96, 208],
+  "COMMANDS": {
+    "SPAWN_DECORYSTAL": {
+      "NAME": "spawndecorystal",
+      "DESCRIPTION": "Spawn Decorystal"
+    }
+  },
+  "MESSAGES": {
+    "SPAWN_DECORYSTAL": "Spawned Decorystal",
+    "REMOVE_DECORYSTAL": "Removed Decorystal"
+  }
+}
