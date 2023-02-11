@@ -24,6 +24,7 @@ final class DecorystalEntity extends Entity
 {
     private static string $removeMessage;
     private static Color $color;
+    private static int $dustCircleRadius;
     private static float $plusCount;
     private float $coolTime = 0;
 
@@ -34,6 +35,7 @@ final class DecorystalEntity extends Entity
         [$red, $green, $blue] = Decorystal::$config->get("DUST_COLOR");
         self::$color = new Color($red, $green, $blue);
         self::$plusCount = 360 / Decorystal::$config->get("DUST_COUNT");
+        self::$dustCircleRadius = Decorystal::$config->get("DUST_CIRCLE_RADIUS");
     }
 
     public static function getNetworkTypeId(): string
@@ -64,8 +66,8 @@ final class DecorystalEntity extends Entity
             $position = $this->getPosition();
             $world = $position->getWorld();
             for($i = 0; $i < 360; $i += self::$plusCount) {
-                $x = sin(deg2rad($i)) * 3;
-                $z = cos(deg2rad($i)) * 3;
+                $x = sin(deg2rad($i)) * self::$dustCircleRadius;
+                $z = cos(deg2rad($i)) * self::$dustCircleRadius;
                 $world->addParticle($position->add($x, 0, $z), new DustParticle(self::$color));
             }
             $this->coolTime = $now + 0.5;

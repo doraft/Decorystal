@@ -3,6 +3,7 @@
   "COOL_TIME": 0.5,
   "DUST_COUNT": 18,
   "DUST_COLOR": [255, 96, 208],
+  "DUST_CIRCLE_RADIUS": 3,
   "COMMANDS": {
     "SPAWN_DECORYSTAL": {
       "NAME": "데코리스탈소환",
