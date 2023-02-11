@@ -7,7 +7,7 @@ A PocketMine-MP Plugin For Decoration EnderCrystal
 ### Image
 
 <a id="Image">
-    <img src="https://github.com/doraft/Deocrystal/blob/PM4/assets/image.png" width="1000"  alt="Image"/>
+    <img src="https://github.com/doraft/Decorystal/blob/PM4/assets/image.png" width="1000"  alt="Image"/>
 </a>
 
 ### Supported Languages
